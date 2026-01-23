@@ -154,7 +154,7 @@ No restart required!
 - `binary_sensor.ev_charge_schedule_enabled` - Schedule active?
 - `binary_sensor.ev_excess_solar_enabled` - Solar charging enabled?
 
-### Buttons (2)
+### Buttons - currently disabled (2)
 - `button.ev_charger_start_charging` - Start charging manually
 - `button.ev_charger_stop_charging` - Stop charging manually
 
@@ -169,7 +169,7 @@ entities:
   - sensor.ev_session_energy
   - sensor.ev_excess_solar_status
   - sensor.ev_charging_schedules
-  
+
   # Start button (only when plugged in, not charging)
   - type: conditional
     conditions:
@@ -186,7 +186,7 @@ entities:
         service_data:
           entity_id: button.ev_charger_start_charging
       icon: mdi:play-circle
-  
+
   # Stop button (only when charging)
   - type: conditional
     conditions:
@@ -217,7 +217,7 @@ automation:
         data:
           title: "⚡ EV Charging Started"
           message: >
-            {{ states('sensor.ev_connected_vehicle') }} is now charging at 
+            {{ states('sensor.ev_connected_vehicle') }} is now charging at
             {{ states('sensor.ev_charger_power') }} kW
 ```
 
