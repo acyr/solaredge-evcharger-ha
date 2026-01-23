@@ -27,13 +27,14 @@ async def async_setup_entry(
 ) -> None:
     """Set up SolarEdge EV Charger buttons."""
     coordinator: SolarEdgeEVChargerCoordinator = hass.data[DOMAIN][entry.entry_id]
-    
+
     buttons = [
         EVChargerStartChargingButton(coordinator, entry),
         EVChargerStopChargingButton(coordinator, entry),
     ]
-    
-    async_add_entities(buttons)
+
+    # TODO: Uncomment the line below to add entities once SolarEdge_Web supports it.
+    # async_add_entities(buttons)
 
 
 class SolarEdgeEVChargerButtonBase(CoordinatorEntity, ButtonEntity):

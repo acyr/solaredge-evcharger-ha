@@ -1,11 +1,10 @@
 """Constants for the SolarEdge EV Charger integration."""
 
-DOMAIN = "solaredge_ev_charger_us"
+DOMAIN = "solaredge_ev_charger_na"
 PLATFORMS = ["sensor", "binary_sensor", "button"]
 
 # Configuration keys
 CONF_SITE_ID = "site_id"
-CONF_COOKIE = "cookie"
 CONF_USERNAME = "username"
 CONF_PASSWORD = "password"
 CONF_SCAN_INTERVAL = "scan_interval"
@@ -16,14 +15,6 @@ CONF_DEVICE_ID = "device_id"
 DEFAULT_SCAN_INTERVAL = 30
 DEFAULT_TIMEOUT = 30
 DEFAULT_NAME = "SolarEdge EV Charger"
-
-# API endpoints
-API_BASE_URL = "https://monitoring.solaredge.com"
-API_DEVICES_ENDPOINT = "/services/api/homeautomation/v1.0/sites/{site_id}/devices"
-API_CONTROL_ENDPOINT = "/services/m/api/homeautomation/v1.0/{site_id}/devices/{device_id}/activationState"
-
-# Cookie name
-COOKIE_NAME = "SPRING_SECURITY_REMEMBER_ME_COOKIE"
 
 # Charger status values
 CHARGER_STATUS_CHARGING = "CHARGING"
