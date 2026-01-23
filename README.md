@@ -37,7 +37,6 @@ This is a **custom component** that integrates seamlessly with Home Assistant th
 
 ### 🔧 Easy Configuration
 - **UI-based setup** - no manual YAML editing!
-- Update expired cookies through the options menu
 - Adjust scan interval and timeout settings
 - Automatic device discovery
 
@@ -88,22 +87,6 @@ This is a **custom component** that integrates seamlessly with Home Assistant th
 2. Look at the URL: `https://monitoring.solaredge.com/solaredge-web/p/site/XXXXXXX/#/dashboard`
 3. The number `XXXXXXX` is your Site ID
 
-#### Step 2: Extract Browser Cookie
-
-**For Chrome:**
-1. Press `F12` to open Developer Tools
-2. Go to **Application** tab
-3. Click **Cookies** → `monitoring.solaredge.com`
-4. Find `SPRING_SECURITY_REMEMBER_ME_COOKIE`
-5. Copy the **Value**
-
-**For Firefox:**
-1. Press `F12` to open Developer Tools
-2. Go to **Storage** tab
-3. Click **Cookies** → `monitoring.solaredge.com`
-4. Find `SPRING_SECURITY_REMEMBER_ME_COOKIE`
-5. Copy the **Value**
-
 ### Adding the Integration
 
 1. **Go to Settings → Devices & Services**
@@ -111,25 +94,12 @@ This is a **custom component** that integrates seamlessly with Home Assistant th
 3. **Search for "SolarEdge EV Charger"**
 4. **Enter your credentials:**
    - **Site ID**: Your site ID from step 1
-   - **Browser Cookie**: Your cookie from step 2
-   - **Username/Password**: (Optional, reserved for future OAuth support)
+   - **Username/Password**: Your SolarEdge Monitoring credentials
    - **Scan Interval**: How often to update (default: 30 seconds)
    - **Timeout**: API request timeout (default: 30 seconds)
 5. **Click Submit**
 
 The integration will automatically discover your EV Charger and create all sensors!
-
-## 🔄 Updating Expired Cookie
-
-Cookies typically expire every 7-14 days. To update:
-
-1. **Go to Settings → Devices & Services**
-2. **Find "SolarEdge EV Charger"**
-3. **Click "Configure"**
-4. **Paste your new cookie**
-5. **Click Submit**
-
-No restart required!
 
 ## 📊 Available Entities
 
@@ -226,12 +196,10 @@ automation:
 ### Integration Won't Load
 
 - **Check logs**: Settings → System → Logs
-- **Verify cookie**: Make sure it's copied completely
 - **Check Site ID**: Verify it matches your monitoring portal
 
 ### Sensors Show "Unavailable"
 
-- **Cookie expired**: Update through options menu
 - **Network issues**: Check Home Assistant can reach internet
 - **API rate limit**: Increase scan interval
 
@@ -260,6 +228,9 @@ For more detailed information:
 Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## 📝 Changelog
+
+### v1.3.0 (2026-01-23)
+- ✨ **NEW**: Use username/password credentials instead of manual cookies
 
 ### v1.2.0 (2026-01-15)
 - ✨ **NEW**: Full HACS integration with UI configuration
