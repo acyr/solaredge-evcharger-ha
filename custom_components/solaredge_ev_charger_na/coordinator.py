@@ -114,7 +114,7 @@ class SolarEdgeEVChargerCoordinator(DataUpdateCoordinator):
     async def _set_charging_state(self, level: int) -> bool:
         """Set the charging state."""
         try:
-            await self.api.async_set_ev_charger_level(
+            await self.api.async_set_ev_charging_state(
                 device_id=self.device_id,
                 level=level
                 )
@@ -127,6 +127,8 @@ class SolarEdgeEVChargerCoordinator(DataUpdateCoordinator):
         except (TimeoutError, ClientError):
             _LOGGER.error("Cannot connect to the service")
             return False
+
+        return True
 
     async def async_shutdown(self) -> None:
         """Close the session."""

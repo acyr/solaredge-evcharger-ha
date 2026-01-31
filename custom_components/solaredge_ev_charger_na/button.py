@@ -33,8 +33,7 @@ async def async_setup_entry(
         EVChargerStopChargingButton(coordinator, entry),
     ]
 
-    # TODO: Uncomment the line below to add entities once SolarEdge_Web supports it.
-    # async_add_entities(buttons)
+    async_add_entities(buttons)
 
 
 class SolarEdgeEVChargerButtonBase(CoordinatorEntity, ButtonEntity):
