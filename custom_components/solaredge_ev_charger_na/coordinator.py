@@ -11,7 +11,7 @@ import async_timeout
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.update_coordinator import DataUpdateCoordinator, UpdateFailed
 from homeassistant.helpers.aiohttp_client import async_get_clientsession
-from solaredge_web import SolarEdgeWeb
+from .solaredge_web import SolarEdgeWeb
 from aiohttp import ClientError, ClientResponseError
 
 from .const import (
