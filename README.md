@@ -1,9 +1,9 @@
-# SolarEdge EV Charger Integration for Home Assistant
+# SolarEdge EV Charger North American Integration for Home Assistant
 
 [![hacs_badge](https://img.shields.io/badge/HACS-Custom-orange.svg)](https://github.com/custom-components/hacs)
 [![Home Assistant](https://img.shields.io/badge/Home%20Assistant-Compatible-blue.svg)](https://www.home-assistant.io/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![GitHub release](https://img.shields.io/github/release/briadelour/solaredge-evcharger-ha.svg)](https://github.com/briadelour/solaredge-evcharger-ha/releases)
+[![GitHub release](https://img.shields.io/github/release/acyr/solaredge-evcharger-ha.svg)](https://github.com/acyr/solaredge-evcharger-ha/releases)
 
 Monitor and **control** your SolarEdge EV Charger directly in Home Assistant using the private SolarEdge API.
 
@@ -55,7 +55,7 @@ This is a **custom component** that integrates seamlessly with Home Assistant th
    - Open HACS in Home Assistant
    - Click the 3 dots in the top right
    - Select "Custom repositories"
-   - Add repository URL: `https://github.com/briadelour/solaredge-evcharger-ha`
+   - Add repository URL: `https://github.com/acyr/solaredge-evcharger-ha`
    - Category: `Integration`
    - Click "Add"
 
@@ -229,6 +229,10 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## 📝 Changelog
 
+### v1.4.0 (2026-01-31)
+- ✨ **NEW**: Integrate latest solaredge_web lib directly to avoid conflict with hass version
+- ✨ **NEW**: Enable start charge/stop charge buttons
+
 ### v1.3.0 (2026-01-23)
 - ✨ **NEW**: Use username/password credentials instead of manual cookies
 
@@ -260,6 +264,7 @@ This integration is not affiliated with, endorsed by, or connected to SolarEdge 
 
 ## 🙏 Acknowledgments
 
+- Thanks to @briadelour for creating this custom component!
 - Thanks to the Home Assistant community
 - Thanks to HACS for making custom integrations easy
 - Thanks to all contributors and testers
