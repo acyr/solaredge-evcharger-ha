@@ -93,15 +93,30 @@ class SolarEdgeEVChargerCoordinator(DataUpdateCoordinator):
             if not ev_chargers or len(ev_chargers) == 0:
                 raise Exception(ERROR_INVALID_SITE)
 
-        except aiohttp.ClientError:
+        except (aiohttp.ClientError, TimeoutError):
             raise Exception(ERROR_CANNOT_CONNECT)
         except Exception as e:
-            if str(e) in [ERROR_AUTH_FAILED, ERROR_INVALID_SITE, ERROR_CANNOT_CONNECT]:
+            # Check for specific expected error types instead of string matching
+            if isinstance(e, Exception) and str(e) in [ERROR_AUTH_FAILED, ERROR_INVALID_SITE, ERROR_CANNOT_CONNECT]:
                 raise
             _LOGGER.exception("Unexpected error validating credentials")
             raise Exception(ERROR_UNKNOWN)
 
-        return ev_chargers[0]
+        # Verify device_id persistence
+        if self.device_id and self.device_id != str(ev_chargers[0].get("reporterId")):
+            _LOGGER.warning("Device ID changed in API, but config still uses: %s", self.device_id)
+        else:
+            self.device_id = str(ev_chargers[0].get("reporterId"))
+
+        # Implement retries for data fetching
+        for attempt in range(3):
+            try:
+                return ev_chargers[0]
+            except Exception as e:
+                if attempt == 2:
+                    raise
+                _LOGGER.warning("Retry %d/3 for fetching data due to: %s", attempt + 1, e)
+                await asyncio.sleep(2 ** attempt)
 
     async def async_start_charging(self) -> bool:
         """Start charging the EV."""

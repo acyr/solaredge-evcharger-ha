@@ -36,9 +36,7 @@ from .const import (
 _LOGGER = logging.getLogger(__name__)
 
 
-async def validate_input(hass: HomeAssistant, data: dict[str, Any]) -> dict[str, Any]:
     """Validate the user input allows us to connect.
-
     Data has the keys from STEP_USER_DATA_SCHEMA with values provided by the user.
     """
     site_id = data[CONF_SITE_ID]
@@ -91,7 +89,7 @@ async def validate_input(hass: HomeAssistant, data: dict[str, Any]) -> dict[str,
             CONF_DEVICE_ID: str(device_id),
         }
 
-    except aiohttp.ClientError:
+    except (aiohttp.ClientError, TimeoutError):
         raise Exception(ERROR_CANNOT_CONNECT)
     except Exception as e:
         if str(e) in [ERROR_AUTH_FAILED, ERROR_INVALID_SITE, ERROR_CANNOT_CONNECT]:
